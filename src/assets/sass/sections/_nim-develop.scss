@@ -1,0 +1,81 @@
+// Mixins
+.list-sm-indent{
+	ul, ol{
+		padding-left: 0;
+		list-style-position: inside;
+		li{
+			padding-left: 0;
+		}
+	}
+}
+
+/////////////////
+//// Layouts ////
+/////////////////
+
+// Nav //
+.qg-section-nav .qg-inner ul li li a {
+	width: auto; // over-ride
+	margin-left: 0; // over-ride
+}
+.qg-section-nav .qg-inner, .qg-secondary-content .qg-inner .qg-aside{
+	padding: 1.75rem;
+}
+
+.qg-aside p{
+	margin: 0;
+}
+
+.qg-section-nav .qg-inner{
+	ul[aria-label~="navigation"]{
+		font-size: 1.2rem;
+
+		ul{
+			padding-left: 1rem;
+		}
+
+		li{
+			a{
+				width: auto;
+				display: block;
+
+				// padding: 0; // over-ride
+				margin: 0 -1.75rem;
+				padding: 0.5rem 1.75rem;
+			}
+			a:hover{
+				background-color: #FCFCFC;
+				text-decoration: underline;
+			}
+			a.active:hover{
+				background-color: #007EB1;
+				text-decoration: none;
+			}
+			li{
+				a{
+					margin: 0 -1.75rem 0 -2.75rem;
+					padding-left: 2.75rem;
+				}
+				li{
+					a{
+						margin: 0 -1.75rem 0 -3.75rem;
+						padding-left: 3.75rem;
+					}
+				}
+			}
+		}
+	}
+
+	h2, h3, h4{
+		margin: 0;
+		padding: 0;
+
+		& + *{
+			margin-top: 1rem;
+		}
+	}
+}
+
+.qg-inner{
+	
+}
