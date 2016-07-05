@@ -12,6 +12,17 @@
 /////////////////
 //// Layouts ////
 /////////////////
+.qg-secondary-content{
+	@extend .list-sm-indent;
+}
+#qg-index-links{
+	@extend .list-sm-indent;
+	@extend .row;
+
+	&> div, &> span{
+		@extend .col-md-6;
+	}
+}
 
 // Nav //
 .qg-section-nav .qg-inner ul li li a {
