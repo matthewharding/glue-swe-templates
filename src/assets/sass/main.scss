@@ -1,22 +1,52 @@
-@import "helpers/variables";
+@import "helpers/_variables.scss";
+@import "helpers/_mixins.scss";
 
 @import "../../../node_modules/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
 @import "../lib/font-awesome/css/font-awesome.min.css";
 @import "../../../node_modules/breakpoint-sass/stylesheets/_breakpoint.scss";
 
-@import "base/typography";
-@import "sections/general";
-@import "sections/grid";
-@import "sections/header";
-@import "sections/breadcrumb";
-@import "sections/main-content";
-@import "sections/forms";
-@import "sections/feedback";
-@import "sections/sidebar-nav";
-@import "sections/secondary-content";
-@import "sections/footer";
+
+//@import "sections/_grid.scss";
+
+
+@import "_layout.scss";
+@import "base/_typography.scss";
+@import "_general.scss";
+
+// ################################
+// site header (qg-site-header)
+
+@import "site-header/_header.scss";
+
+@import "site-header/_coat-of-arms.scss";
+@import "site-header/_site-utilities.scss";
+@import "site-header/_site-search.scss";
+@import "site-header/_site-name.scss";
+@import "site-header/_site-navigation.scss";
+@import "site-header/_alerts.scss";
+
+// ################################
+// site content (qg-content)
+@import "page-content/section-navigation/_section-navigation.scss";
+@import "page-content/breadcrumbs/_breadcrumb.scss";
+//@import "sections/_main-content.scss";
+
+// ################################
+// site page content (qg-primary-content)
+
+@import "page-content/primary-content/_index-page-grid.scss";
+
+@import "page-content/_feedback.scss";
+
+
+//@import "sections/_forms.scss";
+
+@import "page-content/_feedback.scss";
+//@import "sections/_sidebar-nav.scss";
+//@import "sections/_secondary-content.scss";
+@import "page-content/secondary-content/_asides.scss";
+@import "site-footer/_footer.scss";
 
 // develop only:
-@import "sections/gavin-develop";
-
-
+@import "_gavin-develop.scss";
+@import "helpers/_equal-height-columns.scss";

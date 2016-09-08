@@ -3,6 +3,8 @@
 var gulp = require('gulp'),
     plugins = require('gulp-load-plugins')(),
     del = require('del'),
+    bowerConfig = require('./bower.json'),
+    argv = require('yargs').argv,
     supportedBrowser = ['last 2 versions','ie 7', 'ie 8', 'ie 9','ie 10', 'ie 11', 'android 2.3', 'android 4', 'opera 12'];
 
 // TODO - config from a separate file
@@ -15,7 +17,9 @@ var config = {
         release: 'release/',
         static: 'release/static.qgov.net.au/',
         test : 'test/',
-        swe : 'swe/'
+        swe : 'swe/',
+        bowerVersion : bowerConfig.version,
+        node_modules: 'node_modules/'
     },
     projects : ['swe' , 'cue' , 'ice' , 'flux'],
     franchise : ['www.qld.gov.au' , 'tmr.com.au' , 'test.com'],
@@ -95,15 +99,22 @@ gulp.task('watch', function() {
         '!'+config.basepath.src+'{assets,assets/**}'
     ], ['content']);
     gulp.watch([config.basepath.src+'*',config.basepath.src+'*'+'*',config.basepath.src+'*'+'*'], ['other:assets']);
+    gulp.watch('build/**/*', ['drop']);
 });
 /*=====================================================================
  RELEASE TASKS
  ======================================================================*/
 gulp.task('release:assets', require('./gulp-tasks/release-process/assets')(gulp, plugins, config));
 gulp.task('release:content', require('./gulp-tasks/release-process/content')(gulp, plugins, config));
+gulp.task('publish:swe', require('./gulp-tasks/release-process/publish')(gulp, plugins, config, argv));
 /*=====================================================================
  TASK RUNNERS
  ======================================================================*/
 gulp.task('default',['content','js','sass', 'other:assets']);
 gulp.task('build',['default']);
 gulp.task('release',['release:assets', 'release:content']);
+
+//sample task
+gulp.task('drop', function() {
+    gulp.src('build/swe/**/*').pipe(gulp.dest('../'));
+});

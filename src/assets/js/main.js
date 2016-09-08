@@ -1,16 +1,15 @@
-var mobileNav = require("./sections/nav/mobile-nav.js");
-var activeSideNav = require("./sections/nav/current-secondary-nav.js");
+import './components/autocomplete.js';
+import './components/forms.js';
+import mobileNav from './components/nav/mobile-nav.js';
+import activeSideNav from './components/nav/current-secondary-nav';
+import utils from './components/global/utils.js';
 
 
-(function($) {
-    "use strict";
+(function () {
+    'use strict';
+    mobileNav.interactions();
+    activeSideNav.highlightNavItem();
+    utils.showHide();
+}());
 
-    mobileNav();
-    activeSideNav.init();
-    
-    // getting specific lib using the loader module
-    qg.glue.loader.init(function () {
-        // code to execute after libs are loaded
-    });
-    
-}(jQuery));
+
